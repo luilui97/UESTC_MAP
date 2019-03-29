@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2016 Baidu, Inc. All Rights Reserved.
+  -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"/>
+
+    <Button
+        android:id="@+id/sbutton"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:shadowColor="@color/colorPrimary"
+        android:background="#4876FF"
+        android:text="Go!"
+        />
+
+    <AutoCompleteTextView
+        android:id="@+id/inputtext"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/sbutton"
+        android:background="#FFFFFF"
+        android:singleLine="true"
+        android:clickable="true"
+        />
+
+    <Button
+        android:id="@+id/btn_bikenavi_normal"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/sbutton"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="12dp"
+        android:background="#4876FF"
+        android:text="Bike"/>
+
+    <Button
+        android:id="@+id/btn_walknavi_normal"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/sbutton"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/btn_bikenavi_normal"
+        android:background="#4876FF"
+        android:text="Walk"/>
+
+    <RelativeLayout
+        android:tag="Bike_Navi_Demo_Page_Container_Layout"
+        android:id="@+id/page_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
