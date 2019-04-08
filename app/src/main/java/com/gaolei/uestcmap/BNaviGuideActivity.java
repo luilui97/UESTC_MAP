@@ -4,8 +4,13 @@ import android.app.Activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.baidu.mapapi.bikenavi.BikeNavigateHelper;
 import com.baidu.mapapi.bikenavi.adapter.IBNaviStatusListener;
@@ -14,6 +19,9 @@ import com.baidu.mapapi.bikenavi.adapter.IBTTSPlayer;
 import com.baidu.mapapi.bikenavi.model.BikeRouteDetailInfo;
 import com.baidu.mapapi.bikenavi.params.BikeNaviLaunchParam;
 import com.baidu.mapapi.walknavi.model.RouteGuideKind;
+
+
+
 
 public class BNaviGuideActivity extends Activity {
 
@@ -52,16 +60,18 @@ public class BNaviGuideActivity extends Activity {
                 Log.d(TAG, "onNaviExit");
             }
         });
-
+        mNaviHelper.startBikeNavi(BNaviGuideActivity.this);
         mNaviHelper.setTTsPlayer(new IBTTSPlayer() {
             @Override
             public int playTTSText(String s, boolean b) {
                 Log.d("tts", s);
+               // speak(s);
                 return 0;
             }
         });
 
-        mNaviHelper.startBikeNavi(BNaviGuideActivity.this);
+
+
 
         mNaviHelper.setRouteGuidanceListener(this, new IBRouteGuidanceListener() {
             @Override
@@ -124,5 +134,8 @@ public class BNaviGuideActivity extends Activity {
 
             }
         });
+
+
     }
+
 }

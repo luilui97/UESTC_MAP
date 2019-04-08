@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-
+import android.widget.Toast;
 
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -136,6 +136,20 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+        Button paroramabtn = (Button) findViewById(R.id.panomarabtn);
+        paroramabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, PanoViewActivity.class);
+                intent.putExtra("latitude", destinationPosition.latitude);
+                intent.putExtra("longitude", destinationPosition.longitude);
+                startActivity(intent);
+            }
+        });
+
+
 
         //initButton();
 
@@ -309,15 +323,17 @@ public class MainActivity extends Activity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 String keyword=editText.getText().toString();
                 mSuggestionSearch.requestSuggestion(new SuggestionSearchOption()
                         .citylimit(true)
                         .city("成都")
                         .keyword(keyword));
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
+                Log.d("changed","text!!!!!!!!!!");
 
             }
         });
@@ -369,6 +385,11 @@ public class MainActivity extends Activity {
                         if(onClickbutton==true)
                         {
                             destinationPosition=new LatLng(info.getPt().latitude,info.getPt().longitude);
+                            if(destinationPosition.latitude<30.744013||destinationPosition.latitude>30.767118)
+                            {
+                                Toast.makeText(MainActivity.this, "目标不在校内", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
 
                             MapStatus mMapStatus = new MapStatus.Builder()
                                     .target(destinationPosition)
@@ -413,6 +434,25 @@ public class MainActivity extends Activity {
             }
         };
         mSuggestionSearch.setOnGetSuggestionResultListener(listener);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

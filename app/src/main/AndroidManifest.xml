@@ -30,13 +30,23 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" /> <!-- 来电消音 -->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 摄影机 -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
 
     <application
         android:name=".MapApplication"
@@ -46,7 +56,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WNaviGuideActivity"></activity>
+        <activity android:name=".PanoViewActivity"
+            android:screenOrientation="sensor"
+            android:configChanges="orientation|keyboardHidden"></activity>
+        <activity android:name=".WNaviGuideActivity" />
         <activity android:name=".BNaviGuideActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -64,6 +77,12 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
+    <supports-screens android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:resizeable="true"
+        android:anyDensity="true"/>
 
 </manifest>

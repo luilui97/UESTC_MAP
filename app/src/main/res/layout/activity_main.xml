@@ -58,10 +58,16 @@
         android:layout_toLeftOf="@+id/btn_bikenavi_normal"
         android:background="#4876FF"
         android:text="Walk"/>
+    <Button
+        android:id="@+id/panomarabtn"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/sbutton"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="16dp"
+        android:background="#4876FF"
+        android:text="panorama"/>
 
-    <RelativeLayout
-        android:tag="Bike_Navi_Demo_Page_Container_Layout"
-        android:id="@+id/page_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+
 </RelativeLayout>
